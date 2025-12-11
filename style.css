@@ -1,0 +1,535 @@
+/* ============ Base reset ============ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f3f4f6;
+  color: #111827;
+  line-height: 1.5;
+}
+
+/* Simple container helper */
+.container {
+  width: min(1200px, 100% - 48px);
+  margin-inline: auto;
+}
+
+/* Links */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.08s ease, box-shadow 0.12s ease, background-color 0.12s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #fbbf24, #f59e0b);
+  box-shadow: 0 10px 25px rgba(245, 158, 11, 0.4);
+  color: #1f2933;
+  border-color: #f59e0b;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background: transparent;
+  border-color: #d1d5db;
+  color: #374151;
+}
+
+.btn-outline:hover {
+  background: #f3f4f6;
+}
+
+/* ============ HEADER ============ */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #ffffff;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.08);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 10px 24px;
+}
+
+/* Brand (logo + text) */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-logo {
+  height: 44px;        /* <<< change this value to make logo bigger/smaller */
+  width: auto;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.brand-tagline {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* Navigation */
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.main-nav a {
+  position: relative;
+  font-size: 14px;
+  color: #4b5563;
+  padding-bottom: 4px;
+}
+
+.main-nav a:hover {
+  color: #111827;
+}
+
+.main-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: #f59e0b;
+  transition: width 0.18s ease;
+}
+
+.main-nav a:hover::after {
+  width: 100%;
+}
+
+.main-nav a.active {
+  font-weight: 600;
+  color: #111827;
+}
+
+.main-nav a.active::after {
+  width: 100%;
+}
+
+/* WhatsApp pill */
+.whatsapp-pill {
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: #22c55e;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 8px 18px rgba(22, 163, 74, 0.35);
+}
+
+.whatsapp-pill:hover {
+  filter: brightness(1.05);
+}
+
+/* ============ GLOBAL LAYOUT ============ */
+
+main {
+  padding: 24px 0 40px;
+}
+
+/* Page hero / heading section (top of each page) */
+.page-hero {
+  padding: 24px 0 10px;
+}
+
+.page-title {
+  margin: 0 0 4px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.page-subtitle {
+  margin: 0;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* Generic section spacing */
+.section {
+  padding: 24px 0;
+}
+
+/* ============ HOME PAGE ============ */
+
+.hero-home {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: 28px;
+  align-items: center;
+  padding-top: 24px;
+}
+
+.hero-text h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.hero-text p {
+  font-size: 15px;
+  color: #4b5563;
+  margin-bottom: 16px;
+}
+
+.hero-highlight {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #fef3c7;
+  color: #92400e;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+/* Simple stats row under hero */
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.hero-stat {
+  min-width: 110px;
+}
+
+.hero-stat-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #6b7280;
+}
+
+.hero-stat-value {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* Placeholder for hero image */
+.hero-image {
+  border-radius: 20px;
+  overflow: hidden;
+  background: radial-gradient(circle at top, #fef3c7, #f9fafb);
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ============ FOOTER ============ */
+
+.site-footer {
+  border-top: 1px solid #e5e7eb;
+  padding: 16px 0 24px;
+  background: #ffffff;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+/* ============ COLLECTION GRID (used on collections / catalogue) ============ */
+
+.collection-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0 18px;
+}
+
+.filter-pill {
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  font-size: 13px;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.filter-pill.active {
+  background: #1d4ed8;
+  color: #ffffff;
+  border-color: #1d4ed8;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.product-card {
+  background: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 14px 35px rgba(15, 23, 42, 0.11);
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;      /* no fixed height */
+  object-fit: contain;  /* or just remove this line */
+  display: block;
+}
+
+
+.product-image-wrap {
+  width: 100%;
+  aspect-ratio: 4 / 3;      /* common photo shape; adjust if needed */
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 18px 18px 0 0;
+}
+
+.product-image-wrap img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;      /* fit inside, never crop */
+  display: block;
+}
+
+
+.product-body {
+  padding: 14px 16px 16px;
+}
+
+.product-title {
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.product-meta {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 10px;
+}
+
+.product-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+/* ============ FAQ PAGE ============ */
+
+.faq-list {
+  display: grid;
+  gap: 12px;
+}
+
+.faq-item {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 12px 14px;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+}
+
+.faq-question {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.faq-answer {
+  font-size: 14px;
+  color: #4b5563;
+}
+
+/* ============ CONTACT PAGE ============ */
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.contact-card,
+.contact-form {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 16px 18px;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+}
+
+/* Simple form styles */
+.form-group {
+  margin-bottom: 12px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  padding: 8px 10px;
+  font-size: 14px;
+}
+
+.form-group textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+/* ============ ABOUT PAGE ============ */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.about-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 18px 20px;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+}
+
+.about-card h2 {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+/* Active nav highlight (set by JS) */
+.nav-links a.active-nav,
+.site-nav a.active-nav {
+  color: #f59e0b;               /* gold-ish */
+  font-weight: 600;
+  position: relative;
+}
+
+.nav-links a.active-nav::after,
+.site-nav a.active-nav::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #fbbf24, #f97316);
+}
+
+
+/* ============ RESPONSIVE ============ */
+
+@media (max-width: 900px) {
+  .header-inner {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .main-nav {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .whatsapp-pill {
+    margin-left: auto;
+  }
+
+  .hero-home {
+    grid-template-columns: 1fr;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contact-layout,
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .header-inner {
+    padding-inline: 16px;
+  }
+
+  .container {
+    width: min(100% - 32px, 100%);
+  }
+}
